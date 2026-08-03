@@ -78,7 +78,7 @@ def backfill_and_flag(transitions: list[Transition], energies: dict[str, float],
             t.consistency_flag = False
         elif not t.removed:
             t.residual = t.freq - (e_upper - e_lower)
-            t.consistency_flag = abs(t.residual) / t.uncertainty_used > cutoff
+            t.consistency_flag = bool(abs(t.residual) / t.uncertainty_used > cutoff)
 
 
 def flag_levels(transitions: list[Transition]) -> set[str]:
