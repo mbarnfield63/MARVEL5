@@ -1,0 +1,184 @@
+.load-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 480px;
+  margin: 80px auto;
+  text-align: left;
+}
+
+.load-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.load-form input {
+  font: inherit;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.load-form button {
+  align-self: flex-start;
+}
+
+.error {
+  color: #e5484d;
+}
+
+.table-view {
+  display: flex;
+  height: 100svh;
+  text-align: left;
+}
+
+.tag-sidebar {
+  width: 220px;
+  flex: 0 0 auto;
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.tag-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tag-count {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.main-pane {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-chip {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: 12px;
+  padding: 2px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-chip button {
+  border: none;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+
+.tabs button {
+  border: none;
+  background: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: var(--text);
+  border-bottom: 2px solid transparent;
+}
+
+.tabs button.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.split {
+  display: flex;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.split-pane {
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.split-pane .data-table {
+  overflow-y: auto;
+}
+
+.data-table {
+  border-collapse: collapse;
+  width: 100%;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.data-table th {
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  padding: 6px 8px;
+}
+
+.data-table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table tbody tr:hover {
+  background: var(--code-bg);
+  cursor: pointer;
+}
+
+.row-flagged {
+  color: #e5484d;
+}
+
+.row-selected {
+  background: var(--accent-bg);
+}
+
+.row-pending {
+  font-style: italic;
+}
+
+.row-removed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.data-table input[type="number"] {
+  width: 90px;
+  font: inherit;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 2px 4px;
+}

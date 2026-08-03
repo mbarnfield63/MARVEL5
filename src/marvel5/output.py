@@ -13,7 +13,7 @@ TRANSITIONS_FIELDS = [
 
 def _write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
     with open(path, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
 

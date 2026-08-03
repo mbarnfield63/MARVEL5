@@ -104,6 +104,8 @@ class MarvelRun:
                 "iso": t.iso,
                 "tag": t.tag,
                 "freq": t.freq,
+                "upper": t.upper,
+                "lower": t.lower,
                 "upper_qn": " ".join(t.upper_qn),
                 "lower_qn": " ".join(t.lower_qn),
                 "orig_unc": t.orig_unc,
