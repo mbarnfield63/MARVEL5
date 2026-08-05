@@ -49,6 +49,12 @@ def solve_energies(transitions: list, unc: list[float] | None = None) -> dict[st
     x = np.zeros(n)
     if n > 1:
         x[1:] = spsolve(a[1:, 1:], y[1:])
+    if not np.isfinite(x).all():
+        raise ValueError(
+            "solve_energies: non-finite result — the weighted transitions form "
+            "a disconnected subgraph (unweighted edges may bridge network.py's "
+            "component, but they don't contribute to the solve)"
+        )
     x -= x.min()
 
     return {level_id: x[i] for level_id, i in idx.items()}

@@ -74,6 +74,21 @@ def test_remove_and_rerun_fixes_energies(run):
     assert energies["IsoA 0 3"] == pytest.approx(33.0, abs=0.5)
 
 
+def test_unverified_flags_tree_shaped_components(run):
+    """IsoB (u1, u2: a bare 3-level chain) has no redundant edge, so it's a
+    tree — no combination-differences cycle to cross-check against. IsoA has
+    five weighted edges over four levels (chain plus two direct cross-checks,
+    including t_bad), so it isn't."""
+    levels_by_id = {lvl["level_id"]: lvl for lvl in run.levels}
+    assert levels_by_id["IsoB 0 0"]["unverified"] is True
+    assert levels_by_id["IsoB 0 2"]["unverified"] is True
+    assert levels_by_id["IsoA 0 0"]["unverified"] is False
+
+    by_id = {t["transition_id"]: t for t in run.transitions}
+    assert by_id["IsoB:u1"]["unverified"] is True
+    assert by_id["IsoA:t1"]["unverified"] is False
+
+
 def test_write_output(run, tmp_path):
     run.write_output(tmp_path)
     assert (tmp_path / "synthetic_levels.csv").exists()

@@ -28,6 +28,7 @@ class Level:
     consistency_flag: bool
     n_transitions: int
     network_id: int
+    unverified: bool = False  # component is tree-shaped (dof == 0): no combination-differences redundancy
 
 
 class MarvelRun:
@@ -57,6 +58,15 @@ class MarvelRun:
                 for level_id, (energy, unc) in solve_with_uncertainty(weighted, bootstrap_iterations).items():
                     energies[level_id] = energy
                     self._levels[level_id] = Level(level_id, energy, unc, False, 0, network_id)
+                # dof = weighted edges - (levels - 1); tree (dof == 0) means no
+                # cycle to cross-check against, so nothing in the component is
+                # independently verified by combination differences.
+                dof = len(weighted) - (len(energies) - 1)
+                unverified = dof == 0
+                for level_id in energies:
+                    self._levels[level_id].unverified = unverified
+                for t in comp:
+                    t.unverified = unverified
             backfill_and_flag(comp, energies, cutoff)
 
         flagged = flag_levels(network_transitions)
@@ -92,6 +102,7 @@ class MarvelRun:
                 "consistency_flag": lvl.consistency_flag,
                 "n_transitions": lvl.n_transitions,
                 "network_id": lvl.network_id,
+                "unverified": lvl.unverified,
             }
             for lvl in sorted(self._levels.values(), key=lambda x: x.level_id)
         ]
@@ -116,6 +127,7 @@ class MarvelRun:
                 "uncertainty_source": t.uncertainty_source,
                 "consistency_flag": t.consistency_flag,
                 "residual": t.residual,
+                "unverified": t.unverified,
             }
             for t in sorted(self._transitions.values(), key=lambda x: x.transition_id)
         ]

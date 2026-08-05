@@ -178,6 +178,11 @@
   opacity: 0.6;
 }
 
+.row-unverified {
+  color: var(--text);
+  opacity: 0.55;
+}
+
 .data-table input[type="number"] {
   width: 90px;
   font: inherit;

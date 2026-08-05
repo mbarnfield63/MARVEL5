@@ -21,6 +21,7 @@ export function LevelsTable({
           <th># Transitions</th>
           <th>Network</th>
           <th>Flag</th>
+          <th>Unverified</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@ export function LevelsTable({
               key={lvl.level_id}
               className={
                 (lvl.consistency_flag ? "row-flagged " : "") +
+                (lvl.unverified ? "row-unverified " : "") +
                 (lvl.level_id === selectedLevel ? "row-selected" : "")
               }
               onClick={() => onSelect(lvl.level_id)}
@@ -44,6 +46,13 @@ export function LevelsTable({
                 {lvl.consistency_flag && (
                   <span title={`Inconsistent with: ${reasons.join(", ")}`}>
                     ⚠ ({reasons.length})
+                  </span>
+                )}
+              </td>
+              <td>
+                {lvl.unverified && (
+                  <span title="Tree-shaped component: no combination-differences redundancy to cross-check against">
+                    tree
                   </span>
                 )}
               </td>

@@ -8,6 +8,7 @@ export interface Level {
   consistency_flag: boolean;
   n_transitions: number;
   network_id: number;
+  unverified: boolean;
 }
 
 export interface Transition {
@@ -27,6 +28,7 @@ export interface Transition {
   uncertainty_source: string;
   consistency_flag: boolean;
   residual: number | null;
+  unverified: boolean;
 }
 
 export interface ProjectSummary {

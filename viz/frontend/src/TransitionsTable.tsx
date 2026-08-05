@@ -24,6 +24,7 @@ export function TransitionsTable({
           <th>Uncertainty</th>
           <th>Residual</th>
           <th>Flag</th>
+          <th>Unverified</th>
           <th></th>
           <th>Removed reason</th>
         </tr>
@@ -37,6 +38,7 @@ export function TransitionsTable({
               key={t.transition_id}
               className={
                 (t.consistency_flag ? "row-flagged " : "") +
+                (t.unverified ? "row-unverified " : "") +
                 (edit ? "row-pending " : "") +
                 (pendingRemoved ? "row-removed" : "")
               }
@@ -61,6 +63,7 @@ export function TransitionsTable({
               </td>
               <td>{t.residual !== null ? t.residual.toExponential(3) : "—"}</td>
               <td>{t.consistency_flag ? "⚠" : ""}</td>
+              <td>{t.unverified ? "tree" : ""}</td>
               <td>
                 <button type="button" onClick={() => onToggleRemove(t.transition_id)}>
                   {pendingRemoved ? "Undo" : "Remove"}

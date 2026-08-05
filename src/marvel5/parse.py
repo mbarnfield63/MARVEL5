@@ -36,6 +36,7 @@ class Transition:
     uncertainty_source: str = "original"  # original | backfilled | user_edited
     consistency_flag: bool = False
     residual: float | None = None  # Delta = obs - calc
+    unverified: bool = False  # this transition's component is tree-shaped (dof == 0): no combination-differences redundancy to cross-check against
 
 
 def _level_id(iso: str, qn: tuple[str, ...]) -> str:

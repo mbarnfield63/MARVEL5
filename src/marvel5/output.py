@@ -3,11 +3,11 @@
 import csv
 from pathlib import Path
 
-LEVELS_FIELDS = ["level_id", "energy", "uncertainty", "consistency_flag", "n_transitions", "network_id"]
+LEVELS_FIELDS = ["level_id", "energy", "uncertainty", "consistency_flag", "n_transitions", "network_id", "unverified"]
 TRANSITIONS_FIELDS = [
     "transition_id", "iso", "tag", "freq", "upper_qn", "lower_qn", "orig_unc",
     "removed", "removed_reason", "uncertainty_used", "uncertainty_altered",
-    "uncertainty_source", "consistency_flag", "residual",
+    "uncertainty_source", "consistency_flag", "residual", "unverified",
 ]
 
 
