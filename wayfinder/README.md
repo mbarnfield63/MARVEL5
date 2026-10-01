@@ -17,3 +17,4 @@ This repo's issue tracker is **GitHub Issues** on `mbarnfield63/MARVEL5`. This d
 
 - [MARVEL v5 Engine](https://github.com/mbarnfield63/MARVEL5/issues/3)
 - [MARVEL v5 Viz App](https://github.com/mbarnfield63/MARVEL5/issues/4)
+- [MARVEL v5 Laya Curation](https://github.com/mbarnfield63/MARVEL5/issues/22)
