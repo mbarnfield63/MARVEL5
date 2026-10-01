@@ -1,0 +1,21 @@
+[project]
+name = "laya-spike"
+version = "0.1.0"
+description = "Step 1 of the Laya curation plan: load a Laya checkpoint offline on Hypatia and answer one choice question"
+requires-python = ">=3.12"
+dependencies = [
+    "laya==0.3.22",
+    "torch>=2.6,<2.12",
+]
+
+# Hypatia: driver 535 (max CUDA 12.2 with minor-version compat) rules out cu13; cu128 builds drop
+# V100 (sm_70), which untyped --gres=gpu:1 often lands on. cu126 covers both.
+# torch <2.12: newer releases route eager ops through Triton (torch/_native), which JIT-compiles
+# with a C compiler the ctr container lacks ("Failed to find C compiler").
+[tool.uv.sources]
+torch = { index = "pytorch-cu126" }
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true

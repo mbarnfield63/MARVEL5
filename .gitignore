@@ -227,3 +227,7 @@ CLAUDE.md
 
 # Copyrighted reference papers - local only, never committed
 wayfinder/papers/
+
+# Large inputs pushed to Hypatia with hpc-data (Laya checkpoints etc.) - never committed
+/data/
+/runs/
